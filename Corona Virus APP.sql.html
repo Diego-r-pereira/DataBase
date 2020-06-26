@@ -1,0 +1,219 @@
+<html>
+<head>
+<title>Corona Virus APP.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+.s4 { color: #808080;}
+.ls0 { height: 1px; border-width: 0; color: #4d4d4d; background-color:#4d4d4d}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Corona Virus APP.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">DROP DATABASE IF EXISTS </span><span class="s1">coronaVirus</span><span class="s0">;</span>
+<span class="s0">CREATE DATABASE </span><span class="s1">coronaVirus</span><span class="s0">;</span>
+<span class="s0">USE </span><span class="s1">coronaVirus</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">CREATE TABLE </span><span class="s1">country</span>
+<span class="s1">(</span>
+   <span class="s1">id_country    </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">country </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">100</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">continent   </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">30</span><span class="s1">)</span>
+<span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">INSERT INTO </span><span class="s1">country (id_country</span><span class="s0">, </span><span class="s1">country</span><span class="s0">, </span><span class="s1">continent)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Bolivia'</span><span class="s0">, </span><span class="s3">'AMERICA'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Uruguay'</span><span class="s0">, </span><span class="s3">'AMERICA'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Spain'</span><span class="s0">, </span><span class="s3">'EUROPE'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Wakanda'</span><span class="s0">, </span><span class="s3">'AFRICA'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'China'</span><span class="s0">, </span><span class="s3">'ASIA'</span><span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">CREATE TABLE </span><span class="s1">state</span>
+<span class="s1">(</span>
+   <span class="s1">id_dep </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">nombre </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span>
+<span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">INSERT INTO </span><span class="s1">state (id_dep</span><span class="s0">, </span><span class="s1">nombre)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Cochabamba'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'La Paz'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Santa Cruz'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Beni'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Chuquisaca'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Potosi'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Tarija'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Pando'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Oruro'</span><span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">CREATE TABLE </span><span class="s1">cases</span>
+<span class="s1">(</span>
+   <span class="s1">id_cases </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">tipo </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">id_dep </span><span class="s0">INTEGER                            NOT NULL,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_dep) </span><span class="s0">REFERENCES </span><span class="s1">state (id_dep)</span>
+<span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">INSERT INTO </span><span class="s1">cases (id_cases</span><span class="s0">, </span><span class="s1">tipo</span><span class="s0">, </span><span class="s1">id_dep)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Sospechoso'</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Confirmado'</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Sospechoso'</span><span class="s0">, </span><span class="s2">5</span><span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">CREATE TABLE </span><span class="s1">persona</span>
+<span class="s1">(</span>
+   <span class="s1">id_per    </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">nombre    </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">apellidos </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">fecha_nac </span><span class="s0">DATE,</span>
+   <span class="s1">sexo      </span><span class="s0">CHAR</span><span class="s1">(</span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">id_dep    </span><span class="s0">INTEGER,</span>
+   <span class="s1">id_country   </span><span class="s0">INTEGER,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_dep) </span><span class="s0">REFERENCES </span><span class="s1">state (id_dep)</span><span class="s0">,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_country) </span><span class="s0">REFERENCES </span><span class="s1">country (id_country)</span>
+<span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">INSERT INTO </span><span class="s1">persona (id_per</span><span class="s0">, </span><span class="s1">nombre</span><span class="s0">, </span><span class="s1">apellidos</span><span class="s0">, </span><span class="s1">fecha_nac</span><span class="s0">, </span><span class="s1">sexo</span><span class="s0">, </span><span class="s1">id_dep</span><span class="s0">, </span><span class="s1">id_country)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Micaela'</span><span class="s0">, </span><span class="s3">'Montez Villa'</span><span class="s0">, </span><span class="s3">'1990/12/10'</span><span class="s0">, </span><span class="s3">'F'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Juan'</span><span class="s0">, </span><span class="s3">'Adubiri Colque'</span><span class="s0">, </span><span class="s3">'1991/12/10'</span><span class="s0">, </span><span class="s3">'M'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Soledad'</span><span class="s0">, </span><span class="s3">'Gamirde Tori'</span><span class="s0">, </span><span class="s3">'1992/12/10'</span><span class="s0">, </span><span class="s3">'F'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Carlos'</span><span class="s0">, </span><span class="s3">'Cespedes Rocha'</span><span class="s0">, </span><span class="s3">'1993/12/10'</span><span class="s0">, </span><span class="s3">'M'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">,</span><span class="s2">5</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Manuel'</span><span class="s0">, </span><span class="s3">'Gomez Quisbert'</span><span class="s0">, </span><span class="s3">'1994/12/10'</span><span class="s0">, </span><span class="s3">'M'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Carla'</span><span class="s0">, </span><span class="s3">'Morelia Duya'</span><span class="s0">, </span><span class="s3">'1995/12/10'</span><span class="s0">, </span><span class="s3">'F'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">CREATE TABLE </span><span class="s1">detalle_contagios</span>
+<span class="s1">(</span>
+   <span class="s1">id_contg   </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">id_per  </span><span class="s0">INTEGER,</span>
+   <span class="s1">id_cases </span><span class="s0">INTEGER,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_per) </span><span class="s0">REFERENCES </span><span class="s1">persona (id_per)</span><span class="s0">,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_cases) </span><span class="s0">REFERENCES </span><span class="s1">cases (id_cases)</span>
+<span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">INSERT INTO </span><span class="s1">detalle_contagios (id_contg</span><span class="s0">, </span><span class="s1">id_per</span><span class="s0">, </span><span class="s1">id_cases)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">;</span><hr class="ls0"><span class="s4"># ****************************************************************************************************</span>
+
+<span class="s0">CREATE VIEW </span><span class="s1">contagios_state </span><span class="s0">AS</span>
+<span class="s0">SELECT </span><span class="s1">CONCAT_WS(</span><span class="s3">' '</span><span class="s0">, </span><span class="s1">per.nombre</span><span class="s0">, </span><span class="s1">per.apellidos)  </span><span class="s0">as </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">,</span>
+       <span class="s1">cs.tipo </span><span class="s0">as </span><span class="s1">TIPO_CONTAGIO</span><span class="s0">,</span>
+       <span class="s0">CASE</span>
+           <span class="s0">WHEN </span><span class="s1">per.sexo = </span><span class="s3">'F' </span><span class="s0">THEN </span><span class="s3">'FEMENINO'</span>
+           <span class="s0">WHEN </span><span class="s1">per.sexo = </span><span class="s3">'M' </span><span class="s0">THEN </span><span class="s3">'MASCULINO'</span>
+           <span class="s0">END                                    AS </span><span class="s1">SEXO</span>
+<span class="s0">FROM </span><span class="s1">detalle_contagios </span><span class="s0">as </span><span class="s1">dc</span>
+    <span class="s0">INNER JOIN </span><span class="s1">persona </span><span class="s0">as </span><span class="s1">per </span><span class="s0">ON </span><span class="s1">per.id_per = dc.id_per</span>
+    <span class="s0">INNER JOIN </span><span class="s1">cases </span><span class="s0">as </span><span class="s1">cs </span><span class="s0">ON </span><span class="s1">cs.id_cases = dc.id_cases</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">select </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">, </span><span class="s1">TIPO_CONTAGIO</span><span class="s0">, </span><span class="s1">SEXO</span>
+<span class="s0">from </span><span class="s1">contagios_state</span>
+<span class="s0">ORDER BY </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">ALTER VIEW </span><span class="s1">contagios_contry </span><span class="s0">AS</span>
+<span class="s0">SELECT </span><span class="s1">CONCAT_WS(</span><span class="s3">' '</span><span class="s0">, </span><span class="s1">per.nombre</span><span class="s0">, </span><span class="s1">per.apellidos)  </span><span class="s0">as </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">,</span>
+       <span class="s1">cs.tipo </span><span class="s0">as </span><span class="s1">TIPO_CONTAGIO</span><span class="s0">,</span>
+       <span class="s1">CONCAT_WS(</span><span class="s3">' - '</span><span class="s0">, </span><span class="s1">co.country</span><span class="s0">, </span><span class="s1">co.continent) </span><span class="s0">as </span><span class="s1">COUNTRY</span><span class="s0">,</span>
+       <span class="s0">CASE</span>
+           <span class="s0">WHEN </span><span class="s1">per.sexo = </span><span class="s3">'F' </span><span class="s0">THEN </span><span class="s3">'FEMENINO'</span>
+           <span class="s0">WHEN </span><span class="s1">per.sexo = </span><span class="s3">'M' </span><span class="s0">THEN </span><span class="s3">'MASCULINO'</span>
+           <span class="s0">END                                    AS </span><span class="s1">SEXO</span>
+<span class="s0">FROM </span><span class="s1">detalle_contagios </span><span class="s0">as </span><span class="s1">dc</span>
+    <span class="s0">INNER JOIN </span><span class="s1">persona </span><span class="s0">as </span><span class="s1">per </span><span class="s0">ON </span><span class="s1">per.id_per = dc.id_per</span>
+    <span class="s0">INNER JOIN </span><span class="s1">cases </span><span class="s0">as </span><span class="s1">cs </span><span class="s0">ON </span><span class="s1">cs.id_cases = dc.id_cases</span>
+    <span class="s0">INNER JOIN </span><span class="s1">country </span><span class="s0">as </span><span class="s1">co </span><span class="s0">ON </span><span class="s1">co.id_country = per.id_country</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">select </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">, </span><span class="s1">COUNTRY</span><span class="s0">, </span><span class="s1">TIPO_CONTAGIO</span><span class="s0">, </span><span class="s1">SEXO</span>
+<span class="s0">from </span><span class="s1">contagios_contry</span>
+<span class="s0">ORDER BY </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">;</span>
+<hr class="ls0"><span class="s4"># ********************************************************************************************************</span>
+
+<span class="s0">CREATE TABLE </span><span class="s1">infectados</span>
+<span class="s1">(</span>
+    <span class="s1">stamp             </span><span class="s0">TIMESTAMP NOT NULL,</span>
+    <span class="s1">userid            </span><span class="s0">TEXT      NOT NULL,</span>
+    <span class="s1">hostname          </span><span class="s0">TEXT      NOT NULL,</span>
+    <span class="s1">tipo              </span><span class="s0">TEXT      NOT NULL,</span>
+    <span class="s1">id_dep            </span><span class="s0">INTEGER   NOT NULL,</span>
+    <span class="s1">descriptionBefore </span><span class="s0">TEXT      NOT NULL,</span>
+    <span class="s1">descriptionAfter  </span><span class="s0">TEXT      NOT NULL</span>
+<span class="s1">)</span><span class="s0">;</span>
+<hr class="ls0"><span class="s0">CREATE TRIGGER </span><span class="s1">infectados_alert</span>
+    <span class="s0">AFTER INSERT</span>
+    <span class="s0">ON </span><span class="s1">cases</span>
+    <span class="s0">FOR EACH ROW</span>
+<span class="s0">BEGIN</span>
+    <span class="s0">DECLARE </span><span class="s1">descriptionBefore </span><span class="s0">TEXT DEFAULT </span><span class="s3">'No tiene historial del VIRUS'</span><span class="s0">;</span>
+    <span class="s0">DECLARE </span><span class="s1">descriptionAfter </span><span class="s0">TEXT DEFAULT </span><span class="s1">NEW.tipo</span><span class="s0">;</span>
+    <span class="s0">DECLARE </span><span class="s1">depart </span><span class="s0">TEXT DEFAULT </span><span class="s1">NEW.id_dep</span><span class="s0">;</span>
+    <span class="s0">case</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'1' </span><span class="s0">THEN SET </span><span class="s1">depart = CONCAT(</span><span class="s3">'State - Cochabamba'</span><span class="s0">, </span><span class="s1">depart) )</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'2' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - La Paz'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'3' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Santa Cruz'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'4' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Beni'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'5' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Chuquisaca'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'6' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Potosi'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'7' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Tarija'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'8' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Pando'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'9' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Oruro'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">end case;</span>
+    <span class="s0">CALL </span><span class="s1">insertCases(</span>
+            <span class="s1">NEW.tipo</span><span class="s0">,</span>
+            <span class="s1">depart</span><span class="s0">,</span>
+            <span class="s1">descriptionBefore</span><span class="s0">,</span>
+            <span class="s1">descriptionAfter</span>
+        <span class="s1">)</span><span class="s0">;</span>
+<span class="s0">end;</span>
+<hr class="ls0"><span class="s0">DROP TRIGGER </span><span class="s1">infectados_update</span><span class="s0">;</span>
+<span class="s0">CREATE TRIGGER </span><span class="s1">infectados_update</span>
+    <span class="s0">AFTER UPDATE ON </span><span class="s1">cases</span>
+    <span class="s0">FOR EACH ROW</span>
+    <span class="s0">BEGIN</span>
+        <span class="s0">DECLARE </span><span class="s1">descriptionBefore </span><span class="s0">TEXT DEFAULT OLD</span><span class="s1">.tipo</span><span class="s0">;</span>
+        <span class="s0">DECLARE </span><span class="s1">descriptionAfter </span><span class="s0">TEXT DEFAULT </span><span class="s1">NEW.tipo</span><span class="s0">;</span>
+        <span class="s0">DECLARE </span><span class="s1">depart </span><span class="s0">TEXT DEFAULT </span><span class="s1">NEW.id_dep</span><span class="s0">;</span>
+    <span class="s0">case</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'1' </span><span class="s0">THEN SET </span><span class="s1">depart = CONCAT(</span><span class="s3">'State - Cochabamba'</span><span class="s0">,</span><span class="s1">depart))</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'2' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - La Paz'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'3' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Santa Cruz'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'4' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Beni'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'5' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Chuquisaca'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'6' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Potosi'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'7' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Tarija'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'8' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Pando'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">WHEN </span><span class="s1">depart = </span><span class="s3">'9' </span><span class="s0">THEN SET </span><span class="s1">depart = </span><span class="s3">'State - Oruro'</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s0">end case;</span>
+        <span class="s0">CALL </span><span class="s1">updateCases(</span>
+            <span class="s1">NEW.tipo</span><span class="s0">,</span>
+            <span class="s1">depart</span><span class="s0">,</span>
+            <span class="s1">descriptionBefore</span><span class="s0">,</span>
+            <span class="s1">descriptionAfter</span>
+        <span class="s1">)</span><span class="s0">;</span>
+    <span class="s0">end;</span>
+<hr class="ls0"><span class="s0">CREATE PROCEDURE </span><span class="s1">insertCases(  </span><span class="s0">IN </span><span class="s1">tipo </span><span class="s0">TEXT,</span>
+                               <span class="s0">IN </span><span class="s1">id_dep </span><span class="s0">TEXT,</span>
+                               <span class="s0">IN </span><span class="s1">descriptionBefore </span><span class="s0">TEXT,</span>
+                               <span class="s0">IN </span><span class="s1">descriptionAfter </span><span class="s0">TEXT</span><span class="s1">)</span>
+<span class="s0">BEGIN</span>
+    <span class="s0">INSERT INTO </span><span class="s1">infectados</span>
+    <span class="s1">(stamp</span><span class="s0">, </span><span class="s1">userid</span><span class="s0">, </span><span class="s1">hostname</span><span class="s0">, </span><span class="s1">tipo</span><span class="s0">, </span><span class="s1">id_dep</span><span class="s0">, </span><span class="s1">descriptionBefore</span><span class="s0">, </span><span class="s1">descriptionAfter) </span>
+    <span class="s0">SELECT </span><span class="s1">now()</span><span class="s0">,</span>
+           <span class="s0">user</span><span class="s1">()</span><span class="s0">,</span>
+           <span class="s1">@@hostname</span><span class="s0">,</span>
+           <span class="s1">tipo</span><span class="s0">,</span>
+           <span class="s1">id_dep</span><span class="s0">,</span>
+           <span class="s1">descriptionBefore</span><span class="s0">,</span>
+           <span class="s1">descriptionAfter</span><span class="s0">;</span>
+<span class="s0">end;</span>
+<hr class="ls0"><span class="s0">CREATE PROCEDURE </span><span class="s1">updateCases(  </span><span class="s0">IN </span><span class="s1">tipo </span><span class="s0">TEXT,</span>
+                               <span class="s0">IN </span><span class="s1">id_dep </span><span class="s0">TEXT,</span>
+                               <span class="s0">IN </span><span class="s1">descriptionBefore </span><span class="s0">TEXT,</span>
+                               <span class="s0">IN </span><span class="s1">descriptionAfter </span><span class="s0">TEXT</span><span class="s1">)</span>
+<span class="s0">BEGIN</span>
+    <span class="s0">INSERT INTO </span><span class="s1">infectados</span>
+    <span class="s1">(stamp</span><span class="s0">, </span><span class="s1">userid</span><span class="s0">, </span><span class="s1">hostname</span><span class="s0">, </span><span class="s1">tipo</span><span class="s0">, </span><span class="s1">id_dep</span><span class="s0">, </span><span class="s1">descriptionBefore</span><span class="s0">, </span><span class="s1">descriptionAfter) </span>
+    <span class="s0">SELECT </span><span class="s1">now()</span><span class="s0">,</span>
+           <span class="s0">user</span><span class="s1">()</span><span class="s0">,</span>
+           <span class="s1">@@hostname</span><span class="s0">,</span>
+           <span class="s1">tipo</span><span class="s0">,</span>
+           <span class="s1">id_dep</span><span class="s0">,</span>
+           <span class="s1">descriptionBefore</span><span class="s0">,</span>
+           <span class="s1">descriptionAfter</span><span class="s0">;</span>
+<span class="s0">end;</span></pre>
+</body>
+</html>

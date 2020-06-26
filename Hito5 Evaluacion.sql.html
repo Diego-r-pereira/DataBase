@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>Hito5 Evaluacion.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Hito5 Evaluacion.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">DROP DATABASE IF EXISTS </span><span class="s1">ongdbaiifinal</span><span class="s0">;</span>
+<span class="s0">CREATE DATABASE </span><span class="s1">ongdbaiifinal</span><span class="s0">;</span>
+<span class="s0">USE </span><span class="s1">ongdbaiifinal</span><span class="s0">;</span>
+
+<span class="s0">CREATE TABLE </span><span class="s1">proyecto</span>
+<span class="s1">(</span>
+   <span class="s1">id_proy    </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">nombreProy </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">100</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">tipoProy   </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">30</span><span class="s1">)</span>
+<span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">INSERT INTO </span><span class="s1">proyecto (id_proy</span><span class="s0">, </span><span class="s1">nombreProy</span><span class="s0">, </span><span class="s1">tipoProy)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Plantacion de Arboles'</span><span class="s0">, </span><span class="s3">'ECOSISTEMA'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Proceso de reliclaje'</span><span class="s0">, </span><span class="s3">'ECOSISTEMA'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Plantacion de Arboles'</span><span class="s0">, </span><span class="s3">'ECOSISTEMA'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Matematica con juegos'</span><span class="s0">, </span><span class="s3">'EDUCACION'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Quimica de vida'</span><span class="s0">, </span><span class="s3">'EDUCACION'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Tipos de cultivos'</span><span class="s0">, </span><span class="s3">'AGRICULTURA'</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">CREATE TABLE </span><span class="s1">departamento</span>
+<span class="s1">(</span>
+   <span class="s1">id_dep </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">nombre </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span>
+<span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">INSERT INTO </span><span class="s1">departamento (id_dep</span><span class="s0">, </span><span class="s1">nombre)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Cochabamba'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'La Paz'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Santa Cruz'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Beni'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Chuquisaca'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Potosi'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Tarija'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Pando'</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Oruro'</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">CREATE TABLE </span><span class="s1">provincia</span>
+<span class="s1">(</span>
+   <span class="s1">id_pro </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">nombre </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">id_dep </span><span class="s0">INTEGER                            NOT NULL,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_dep) </span><span class="s0">REFERENCES </span><span class="s1">departamento (id_dep)</span>
+<span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">INSERT INTO </span><span class="s1">provincia (id_pro</span><span class="s0">, </span><span class="s1">nombre</span><span class="s0">, </span><span class="s1">id_dep)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Quillacollo'</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Cercado'</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Punata'</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">CREATE TABLE </span><span class="s1">persona</span>
+<span class="s1">(</span>
+   <span class="s1">id_per    </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">nombre    </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">apellidos </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">50</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">fecha_nac </span><span class="s0">DATE,</span>
+   <span class="s1">edad      </span><span class="s0">INTEGER,</span>
+   <span class="s1">email     </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">100</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">sexo      </span><span class="s0">CHAR</span><span class="s1">(</span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+   <span class="s1">id_dep    </span><span class="s0">INTEGER,</span>
+   <span class="s1">id_prov   </span><span class="s0">INTEGER,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_dep) </span><span class="s0">REFERENCES </span><span class="s1">departamento (id_dep)</span><span class="s0">,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_prov) </span><span class="s0">REFERENCES </span><span class="s1">provincia (id_pro)</span>
+<span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">INSERT INTO </span><span class="s1">persona (id_per</span><span class="s0">, </span><span class="s1">nombre</span><span class="s0">, </span><span class="s1">apellidos</span><span class="s0">, </span><span class="s1">fecha_nac</span><span class="s0">, </span><span class="s1">edad</span><span class="s0">, </span><span class="s1">email</span><span class="s0">, </span><span class="s1">sexo</span><span class="s0">, </span><span class="s1">id_dep</span><span class="s0">, </span><span class="s1">id_prov)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s3">'Micaela'</span><span class="s0">, </span><span class="s3">'Montez Villa'</span><span class="s0">, </span><span class="s3">'1990/12/10'</span><span class="s0">, </span><span class="s2">28</span><span class="s0">, </span><span class="s3">'nombre1gmail.com'</span><span class="s0">, </span><span class="s3">'F'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Juan'</span><span class="s0">, </span><span class="s3">'Adubiri Colque'</span><span class="s0">, </span><span class="s3">'1991/12/10'</span><span class="s0">, </span><span class="s2">27</span><span class="s0">, </span><span class="s3">'nombre2gmail.com'</span><span class="s0">, </span><span class="s3">'M'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Soledad'</span><span class="s0">, </span><span class="s3">'Gamirde Tori'</span><span class="s0">, </span><span class="s3">'1992/12/10'</span><span class="s0">, </span><span class="s2">26</span><span class="s0">, </span><span class="s3">'nombre3gmail.com'</span><span class="s0">, </span><span class="s3">'F'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Carlos'</span><span class="s0">, </span><span class="s3">'Cespedes Rocha'</span><span class="s0">, </span><span class="s3">'1993/12/10'</span><span class="s0">, </span><span class="s2">25</span><span class="s0">, </span><span class="s3">'nombre4gmail.com'</span><span class="s0">, </span><span class="s3">'M'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Manuel'</span><span class="s0">, </span><span class="s3">'Gomez Quisbert'</span><span class="s0">, </span><span class="s3">'1994/12/10'</span><span class="s0">, </span><span class="s2">24</span><span class="s0">, </span><span class="s3">'nombre5gmail.com'</span><span class="s0">, </span><span class="s3">'M'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s3">'Carla'</span><span class="s0">, </span><span class="s3">'Morelia Duya'</span><span class="s0">, </span><span class="s3">'1995/12/10'</span><span class="s0">, </span><span class="s2">23</span><span class="s0">, </span><span class="s3">'nombre6gmail.com'</span><span class="s0">, </span><span class="s3">'F'</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">CREATE TABLE </span><span class="s1">detalle_proyecto</span>
+<span class="s1">(</span>
+   <span class="s1">id_dp   </span><span class="s0">INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,</span>
+   <span class="s1">id_per  </span><span class="s0">INTEGER,</span>
+   <span class="s1">id_proy </span><span class="s0">INTEGER,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_per) </span><span class="s0">REFERENCES </span><span class="s1">persona (id_per)</span><span class="s0">,</span>
+   <span class="s0">FOREIGN KEY </span><span class="s1">(id_proy) </span><span class="s0">REFERENCES </span><span class="s1">proyecto (id_proy)</span>
+<span class="s1">)</span><span class="s0">;</span>
+
+<span class="s0">INSERT INTO </span><span class="s1">detalle_proyecto (id_dp</span><span class="s0">, </span><span class="s1">id_per</span><span class="s0">, </span><span class="s1">id_proy)</span>
+<span class="s0">VALUES </span><span class="s1">(</span><span class="s0">null, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s1">)</span><span class="s0">,</span>
+      <span class="s1">(</span><span class="s0">null, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">5</span><span class="s1">)</span><span class="s0">;</span>
+<span class="s4"># *********************************************************************************************************************</span>
+<span class="s4"># Question 1</span>
+<span class="s4"># US 1: Crear una Vista de nombre asignacion_proyectos_v1  de las personas que estén en</span>
+<span class="s4"># los proyectos de tipo ECOSISTEMA o EDUCACIÓN.</span>
+
+<span class="s0">CREATE VIEW </span><span class="s1">asignacion_proyectos_v1 </span><span class="s0">AS</span>
+<span class="s0">SELECT </span><span class="s1">CONCAT_WS(</span><span class="s3">' '</span><span class="s0">, </span><span class="s1">per.nombre</span><span class="s0">, </span><span class="s1">per.apellidos)  </span><span class="s0">as </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">,</span>
+       <span class="s1">CONCAT_WS(</span><span class="s3">' '</span><span class="s0">, </span><span class="s1">pr.nombreProy</span><span class="s0">, </span><span class="s1">pr.tipoProy) </span><span class="s0">as </span><span class="s1">DESC_PROYECTO</span><span class="s0">,</span>
+       <span class="s0">CASE</span>
+           <span class="s0">WHEN </span><span class="s1">per.edad &lt;= </span><span class="s2">25 </span><span class="s0">THEN </span><span class="s3">'MI PRIMER PROYECTO'</span>
+           <span class="s0">WHEN </span><span class="s1">per.edad &gt; </span><span class="s2">25 </span><span class="s0">and </span><span class="s1">per.edad &lt;= </span><span class="s2">30 </span><span class="s0">THEN </span><span class="s3">'MI SEGUNDO PROYECTO'</span>
+           <span class="s0">WHEN </span><span class="s1">per.edad &gt; </span><span class="s2">30 </span><span class="s0">THEN </span><span class="s3">'MI PROYECTO FINAL'</span>
+           <span class="s0">END                                    AS </span><span class="s1">NIVEL_PROYECTO</span><span class="s0">,</span>
+       <span class="s0">CASE</span>
+           <span class="s0">WHEN </span><span class="s1">per.sexo = </span><span class="s3">'F' </span><span class="s0">THEN </span><span class="s3">'FEMENINO'</span>
+           <span class="s0">WHEN </span><span class="s1">per.sexo = </span><span class="s3">'M' </span><span class="s0">THEN </span><span class="s3">'MASCULINO'</span>
+           <span class="s0">END                                    AS </span><span class="s1">SEXO</span>
+<span class="s0">FROM </span><span class="s1">proyecto </span><span class="s0">as </span><span class="s1">PR</span>
+         <span class="s0">INNER JOIN </span><span class="s1">detalle_proyecto </span><span class="s0">as </span><span class="s1">dp </span><span class="s0">ON </span><span class="s1">dp.id_proy = pr.id_proy</span>
+         <span class="s0">INNER JOIN </span><span class="s1">persona </span><span class="s0">as </span><span class="s1">per </span><span class="s0">ON </span><span class="s1">per.id_per = dp.id_per</span><span class="s0">;</span>
+
+<span class="s0">select </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">, </span><span class="s1">DESC_PROYECTO</span><span class="s0">, </span><span class="s1">NIVEL_PROYECTO</span><span class="s0">, </span><span class="s1">SEXO</span>
+<span class="s0">from </span><span class="s1">asignacion_proyectos_v1</span>
+<span class="s0">ORDER BY </span><span class="s1">NIVEL_PROYECTO</span><span class="s0">, </span><span class="s1">SEXO</span><span class="s0">;</span>
+
+<span class="s4"># Question 2</span>
+<span class="s4"># US: 2 Crear una Vista de nombre asignacion_proyectos_v2</span>
+<span class="s4"># de las personas que estén en los proyectos de tipo EDUCACIÓN o ECOSISTEMA</span>
+
+<span class="s0">DROP FUNCTION </span><span class="s1">getNivelProyAndSexo</span><span class="s0">;</span>
+<span class="s0">CREATE FUNCTION </span><span class="s1">getNivelProyAndSexo(typeGet </span><span class="s0">VARCHAR</span><span class="s1">(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">, </span><span class="s1">edadPer </span><span class="s0">INTEGER, </span><span class="s1">sexoPer </span><span class="s0">CHAR</span><span class="s1">(</span><span class="s2">1</span><span class="s1">)) </span><span class="s0">RETURNS TEXT</span>
+<span class="s0">BEGIN</span>
+    <span class="s4">#     DECLARE primer TEXT DEFAULT '';</span>
+<span class="s4">#     DECLARE sexo TEXT DEFAULT '';</span>
+    <span class="s0">DECLARE </span><span class="s1">respuesta </span><span class="s0">TEXT DEFAULT </span><span class="s3">''</span><span class="s0">;</span>
+
+    <span class="s0">CASE</span>
+        <span class="s0">WHEN </span><span class="s1">typeGet = </span><span class="s3">'PROYECTO' </span><span class="s0">THEN</span>
+            <span class="s0">CASE</span>
+                <span class="s0">WHEN </span><span class="s1">edadPer &lt;= </span><span class="s2">25 </span><span class="s0">THEN SET </span><span class="s1">respuesta = </span><span class="s3">'MI PRIMER PROYECTO'</span><span class="s0">;</span>
+                <span class="s0">WHEN </span><span class="s1">edadPer &gt; </span><span class="s2">25 </span><span class="s0">and </span><span class="s1">edadPer &lt;= </span><span class="s2">30 </span><span class="s0">THEN SET </span><span class="s1">respuesta = </span><span class="s3">'MI SEGUNDO PROYECTO'</span><span class="s0">;</span>
+                <span class="s0">WHEN </span><span class="s1">edadPer &gt; </span><span class="s2">30 </span><span class="s0">THEN SET </span><span class="s1">respuesta = </span><span class="s3">'MI PROYECTO FINAL'</span><span class="s0">;</span>
+                <span class="s0">END CASE;</span>
+        <span class="s0">WHEN </span><span class="s1">typeGet = </span><span class="s3">'SEXO' </span><span class="s0">THEN</span>
+            <span class="s0">CASE</span>
+                <span class="s0">WHEN </span><span class="s1">sexoPer = </span><span class="s3">'F' </span><span class="s0">THEN SET </span><span class="s1">respuesta = </span><span class="s3">'FEMENINO'</span><span class="s0">;</span>
+                <span class="s0">WHEN </span><span class="s1">sexoPer = </span><span class="s3">'M' </span><span class="s0">THEN SET </span><span class="s1">respuesta = </span><span class="s3">'MASCULINO'</span><span class="s0">;</span>
+                <span class="s0">END CASE;</span>
+        <span class="s0">END CASE;</span>
+
+    <span class="s0">RETURN </span><span class="s1">respuesta</span><span class="s0">;</span>
+<span class="s0">end;</span>
+
+<span class="s0">SELECT </span><span class="s1">getNivelProyAndSexo(</span><span class="s3">'SEXO'</span><span class="s0">, </span><span class="s1">edad</span><span class="s0">, </span><span class="s1">sexo)</span><span class="s0">, </span><span class="s1">edad</span><span class="s0">, </span><span class="s1">sexo</span>
+<span class="s0">from </span><span class="s1">persona</span><span class="s0">;</span>
+
+<span class="s0">CREATE VIEW </span><span class="s1">asignacion_proyectos_v2 </span><span class="s0">AS</span>
+<span class="s0">SELECT </span><span class="s1">CONCAT_WS(</span><span class="s3">' '</span><span class="s0">, </span><span class="s1">per.nombre</span><span class="s0">, </span><span class="s1">per.apellidos)           </span><span class="s0">as </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">,</span>
+       <span class="s1">CONCAT_WS(</span><span class="s3">' '</span><span class="s0">, </span><span class="s1">pr.nombreProy</span><span class="s0">, </span><span class="s1">pr.tipoProy)          </span><span class="s0">as </span><span class="s1">DESC_PROYECTO</span><span class="s0">,</span>
+       <span class="s1">getNivelProyAndSexo(</span><span class="s3">'PROYECTO'</span><span class="s0">, </span><span class="s1">per.edad</span><span class="s0">, </span><span class="s1">per.sexo) </span><span class="s0">as </span><span class="s1">NIVEL_PROYECTO</span><span class="s0">,</span>
+       <span class="s1">getNivelProyAndSexo(</span><span class="s3">'SEXO'</span><span class="s0">, </span><span class="s1">per.edad</span><span class="s0">, </span><span class="s1">per.sexo)     </span><span class="s0">as </span><span class="s1">SEXO</span>
+<span class="s0">FROM </span><span class="s1">proyecto </span><span class="s0">as </span><span class="s1">PR</span>
+         <span class="s0">INNER JOIN </span><span class="s1">detalle_proyecto </span><span class="s0">as </span><span class="s1">dp </span><span class="s0">ON </span><span class="s1">dp.id_proy = pr.id_proy</span>
+         <span class="s0">INNER JOIN </span><span class="s1">persona </span><span class="s0">as </span><span class="s1">per </span><span class="s0">ON </span><span class="s1">per.id_per = dp.id_per</span><span class="s0">;</span>
+
+<span class="s0">select </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">, </span><span class="s1">DESC_PROYECTO</span>
+<span class="s0">from </span><span class="s1">asignacion_proyectos_v2</span>
+<span class="s0">WHERE </span><span class="s1">locate(</span><span class="s3">'EDUCACION'</span><span class="s0">, </span><span class="s1">DESC_PROYECTO)</span>
+<span class="s0">ORDER BY </span><span class="s1">NOMBRE_COMPLETO</span><span class="s0">;</span></pre>
+</body>
+</html>
